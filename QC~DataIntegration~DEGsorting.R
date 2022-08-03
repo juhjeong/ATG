@@ -46,6 +46,7 @@ Pan02_integrated <- RunUMAP(Pan02_integrated, dims = 1:47,umap.method='umap-lear
 DimPlot(Pan02_integrated,reduction = "umap", pt.size = 0.8, label=TRUE)
 
 #DEG sorting
+DefaultAssay(Pan02_CAF) <- "RNA"
 CAF1.markers <- FindMarkers(Pan02_CAF, ident.1 = "CAF-1", logfc.threshold = 0.25, test.use = "roc", only.pos = TRUE)
 write.csv(CAF1.markers,file="CAF1.csv")
 CAF2.markers <- FindMarkers(Pan02_CAF, ident.1 = "CAF-2", logfc.threshold = 0.25, test.use = "roc", only.pos = TRUE)
