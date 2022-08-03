@@ -3,9 +3,9 @@ library(patchwork)
 library(Seurat)
 
 #Quality control
-Control <- CreateSeuratObject(counts = Control.data, project = "Control")
-Gem <- CreateSeuratObject(counts = Gem.data, project = "Gem")
-ATG <- CreateSeuratObject(counts = ATG.data, project = "ATG")
+Control <- CreateSeuratObject(counts = Control.data, project = "Control", min.cells = 3)
+Gem <- CreateSeuratObject(counts = Gem.data, project = "Gem", min.cells = 3)
+ATG <- CreateSeuratObject(counts = ATG.data, project = "ATG", min.cells = 3)
 Control[["percent.mt"]] <- PercentageFeatureSet(Control, pattern = "^Mt-", assay = 'RNA')
 VlnPlot(Control, features = c("nFeature_RNA","nCount_RNA","percent.mt"), pt.size=1, ncol = 3)
 Control <- subset(Control, subset = nFeature_RNA > 500 & nFeature_RNA < 7500 & percent.mt < 15)
