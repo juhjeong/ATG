@@ -85,3 +85,12 @@ CAF2DEG_list <- list(c("Ogn","Prelp","Wnt4","Mfap5","Rarres2","Islr","Angpt4","F
 CAF_scored <- AddModuleScore(object=Pan02_integrated, features = CAF2DEG_list, name = "CAF2_score", replace=TRUE)
 FeaturePlot(CAF_scored, features = "CAF2_score1",pt.size =0.8, cols = matlab.like(8))
 
+
+#Dimplot
+DimPlot(Pan02_integrated, reduction = "umap", label = TRUE, pt.size = 0.4)+NoLegend()
+my_cols <- c("CAF-1"="#04B4EC","CAF-2"="#FF514C","CAF-3"="#F48FEB","CAF-4"="#FF9F25","CAF-5"="#a433f5","CAF-6"="#6ACB61")
+my_cols2 <- my_cols[order(as.integer(names(my_cols)))]
+DimPlot(Pan02_CAF, reduction = "umap", label = TRUE, pt.size = 0.5, cols = my_cols2, split.by = "orig.ident")+NoLegend()
+DimPlot(Pan02_Neut, reduction = "umap", label = TRUE, pt.size = 0.5, split.by="orig.ident")+NoLegend()
+DimPlot(Pan02_TNK, reduction = "umap", label = TRUE, pt.size = 0.5)+NoLegend()
+
