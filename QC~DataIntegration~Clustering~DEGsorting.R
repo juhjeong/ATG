@@ -44,3 +44,18 @@ Pan02_integrated <- FindNeighbors(Pan02_integrated, dims = 1:47)
 Pan02_integrated <- FindClusters(Pan02_integrated, resolution =0.5)
 Pan02_integrated <- RunUMAP(Pan02_integrated, dims = 1:47,umap.method='umap-learn', metric='correlation')  
 DimPlot(Pan02_integrated,reduction = "umap", pt.size = 0.8, label=TRUE)
+
+#DEG sorting
+CAF1.markers <- FindMarkers(Pan02_CAF, ident.1 = "CAF-1", logfc.threshold = 0.25, test.use = "roc", only.pos = TRUE)
+write.csv(CAF1.markers,file="CAF1.csv")
+CAF2.markers <- FindMarkers(Pan02_CAF, ident.1 = "CAF-2", logfc.threshold = 0.25, test.use = "roc", only.pos = TRUE)
+write.csv(CAF2.markers,file="CAF2.csv")
+CAF3.markers <- FindMarkers(Pan02_CAF, ident.1 = "CAF-3", logfc.threshold = 0.25, test.use = "roc", only.pos = TRUE)
+write.csv(CAF3.markers,file="CAF3.csv")
+CAF4.markers <- FindMarkers(Pan02_CAF, ident.1 = "CAF-4", logfc.threshold = 0.25, test.use = "roc", only.pos = TRUE)
+write.csv(CAF4.markers,file="CAF4.csv")
+CAF5.markers <- FindMarkers(Pan02_CAF, ident.1 = "CAF-5", logfc.threshold = 0.25, test.use = "roc", only.pos = TRUE)
+write.csv(CAF5.markers,file="CAF5.csv")
+CAF6.markers <- FindMarkers(Pan02_CAF, ident.1 = "CAF-6", logfc.threshold = 0.25, test.use = "roc", only.pos = TRUE)
+write.csv(CAF6.markers,file="CAF6.csv")
+  #In .csv file, 'diff.pct' was calculated by pct.1 minus pct.2
