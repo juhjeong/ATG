@@ -19,7 +19,7 @@ ATG <- subset(ATG, subset = nFeature_RNA > 500 & nFeature_RNA < 7500 & percent.m
 #Data Merging, Normalization, Integration with barch correction
 Pan02 <- merge(x=Control, y = c(Gem, ATG), add.cell.ids = c("Control","Gem","ATG"), project = "Pan02")
 Pan02.list <- SplitObject(Pan02,split.by = "orig.ident")
-Pan02.list <- snubh_GC.list[c("Control","Gem","ATG")]
+Pan02.list <- Pan02.list[c("Control","Gem","ATG")]
 for (i in 1:length(x = Pan02.list)) {
   Pan02.list[[i]] <- NormalizeData(object = Pan02.list[[i]], verbose = FALSE)
   Pan02.list[[i]] <- FindVariableFeatures(object = Pan02.list[[i]], selection.method = "vst", 
